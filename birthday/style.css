@@ -1,0 +1,158 @@
+* {
+    transition: all 0.2s ease-in-out;
+}
+
+body {
+    background: white;
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    margin: 0;
+    color: white;
+}
+
+
+
+
+/* Card Styling */
+.card {
+    background: #DFC5FE; /* Light pink */
+    border-radius: 4px;
+    width: 80vw;
+    max-width: 700px; /* Prevents it from being too wide */
+    padding: 2em 1em; /* Adds space inside */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: flex-start; /* Keeps content aligned at the top */
+    align-items: center;
+    position: relative;
+    overflow: visible; /* Ensures no content is cut off */
+    min-height: auto; /* Allows dynamic resizing */
+    height: auto; /* Let it grow naturally */
+}
+
+
+
+/* Fix the image size and positioning */
+.card img {
+    max-width: 400px; /* Adjusted to avoid taking too much space */
+    max-height: 350px; /* Keeps proportions without making it too large */
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 15px auto; /* Centers the image and adds spacing below */
+    position: relative;
+    top: -10px; /* Moves the image slightly up to prevent it from being too low */
+    mix-blend-mode: multiply; /* Ensures it blends smoothly */
+    background: none; /* No background override */
+}
+
+/* Text Styling */
+.text {
+    color: black;
+    padding: 1em;
+    text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.8);
+}
+
+.muted {
+    opacity: 0.8;
+}
+
+.space {
+    height: 100px;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+body.play-music {
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* Floating Flowers */
+.flower-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.flower {
+    position: absolute;
+    background: url('White_Daisy_PNG_Clipart-196.png') no-repeat center center;
+    background-size: contain;
+    width: 50px;
+    height: 50px;
+    opacity: 0.8;
+    animation: moveFlowers 6s infinite linear alternate;
+}
+
+@keyframes moveFlowers {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
+    50% { transform: translateY(-20px) rotate(10deg); }
+    100% { transform: translateY(0) rotate(-10deg); opacity: 0.8; }
+}
+
+/* Balloons Styling */
+#balloon-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.balloon {
+    height: 125px;
+    width: 105px;
+    border-radius: 75% 75% 70% 70%;
+    position: absolute;
+    z-index: -1;
+    opacity: 0.7;
+}
+
+.balloon:before {
+    content: "";
+    height: 75px;
+    width: 1px;
+    padding: 1px;
+    background-color: #FDFD96;
+    display: block;
+    position: absolute;
+    top: 125px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.balloon:after {
+    content: "▲";
+    text-align: center;
+    display: block;
+    position: absolute;
+    color: inherit;
+    top: 120px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+@keyframes float {
+    from { transform: translateY(100vh); opacity: 1; }
+    to { transform: translateY(-300vh); opacity: 0; }
+}
